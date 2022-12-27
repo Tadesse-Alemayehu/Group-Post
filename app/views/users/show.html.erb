@@ -1,4 +1,6 @@
-<div>
+<div id="main-container">
+  <div id="active-content">
   <%= button_to "Logout", destroy_user_session_path, method: "delete", data: {trubo: false} %>
-  <%= render(GroupComponent.with_collection(@groups)) %>
+  <%= render "/groups/index", locals: {groups: @groups} %>
+  </div>
 </div>
