@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class NewGroupComponent < ViewComponent::Base
-  def initialize(group:, current_user:)
+include Devise::Controllers::Helpers
+  def initialize(group:)
     @group = group
-    @current_user=current_user
   end
 
 end
