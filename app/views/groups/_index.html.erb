@@ -29,6 +29,6 @@
 </div>
   </div>
   <div id="groups" class="min-w-full">
-      <%= render(GroupComponent.with_collection(@groups)) %>
+      <%= render(GroupComponent.with_collection(@groups, current_user: current_user)) %>
   </div>
 </div>

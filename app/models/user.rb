@@ -17,4 +17,7 @@ class User < ApplicationRecord
   def join=(group)
     self.user_groups.create(group: group)
   end
+  def joined?(group)
+    self.joined.include?(group)
+  end
 end

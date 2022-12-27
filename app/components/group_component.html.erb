@@ -5,5 +5,7 @@
   <span><b><%= @group.posts_count %></b> Posts</span>
   <span>Last active<b><%= @group.last_active %></b>days ago</span>
 </p>
-<button type="button" class=""> Join group</button>
+<% if !@current_user.joined?(@group) %>
+  <button type="button" class=""> Join group</button>
+<% end %>
 </div>

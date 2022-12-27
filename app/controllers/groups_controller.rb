@@ -1,10 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
 
-  def new
-    @group = Group.new
-  end
-
   def edit
   end
 
@@ -14,11 +10,9 @@ class GroupsController < ApplicationController
     current_user.join=(@group)
     respond_to do |format|
       if @group.save
-        format.html { redirect_to user_path(@group), notice: "Group was successfully created." }
-        # format.json { render :show, status: :created, location: @group }
+        format.html { redirect_to user_path(@group) }
       else
         format.html { render :new, status: :unprocessable_entity }
-        # format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -26,7 +20,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to user_path(@group), notice: "Group was successfully updated." }
+        format.html { redirect_to user_path(@group) }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
