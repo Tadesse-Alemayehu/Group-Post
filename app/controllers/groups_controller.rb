@@ -16,6 +16,21 @@ class GroupsController < ApplicationController
       end
     end
   end
+    def leave
+    @group = Group.find(params[:group_id])
+    join=UserGroup.find_by(user: current_user, group: @group)
+    respond_to do |format|
+      if join.destroy
+        format.html { redirect_to user_path(@group) }
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.replace(
+          @group, GroupComponent.new(group: @group).render_in(view_context))
+      }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
   def create
     @group = Group.new(name: group_params[:name])
     UserGroup.create(user: current_user, group: @group)
