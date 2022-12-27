@@ -3,9 +3,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def can(parameter, group)
-    can? parameter, group
-  end
   private
   def prepare_user
     Ability.new(current_user)

@@ -1,6 +1,6 @@
 <div id="<%= dom_id @group %>">
 <% if can? :manage, @group %>
-    <div id="edit" class="">
+    <div id="edit" class="hidden">
     <%= form_with(model: @group, class: "contents", url: user_group_path(user_id: current_user, id: @group.id)) do |form| %>
     <% if @group.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -23,6 +23,7 @@
     <div class="inline">
       <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
     </div>
+     <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
   <% end %>
   </div>
 <% end %>
@@ -33,10 +34,7 @@
   <span>Last active<b><%= @group.last_active %></b>days ago</span>
 </p>
 <% if !current_user.joined?(@group) %>
-  <button type="button" class=""> Join group</button>
-<% end %>
-<% if can? :manage, @group %>
- <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <button type="button" class="mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"> Join group</button>
 <% end %>
 
 </div>
