@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     elsif params[:filter]=='mine'
       @groups = current_user.groups
     else params[:filter]=='member'
-      @groups=current_user.joins
+      @groups=current_user.joined
     end
   end
 end
