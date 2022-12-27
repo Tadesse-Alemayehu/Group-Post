@@ -1,7 +1,3 @@
 <div>
-  <h1 class="font-bold text-4xl">Users#index</h1>
   <%= button_to "Logout", destroy_user_session_path, method: "delete", data: {trubo: false} %>
-  <%= can? :read, @groups[1] %>
-  <%= @groups[1].id %>
-  <%= current_user.id %>
 </div>

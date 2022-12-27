@@ -79,3 +79,5 @@ gem "dotenv-rails", "~> 2.8"
 gem "devise", "~> 4.8"
 
 gem "cancancan", "~> 3.4"
+
+gem "view_component", "~> 2.80"
