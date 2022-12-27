@@ -27,14 +27,16 @@
   <% end %>
   </div>
 <% end %>
-<h1><%= @group.name  %></h1>
-<p>
-  <span><b><%= @group.members_count %></b> Members</span>
-  <span><b><%= @group.posts_count %></b> Posts</span>
-  <span>Last active<b><%= @group.last_active %></b>days ago</span>
+<h1 class="text-xl text-sky-700 m-3"><%= @group.name  %></h1>
+<div class="flex justify-between items-center ">
+  <p class="pl-10 ">
+  <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.members_count %></strong> Members</span>
+  <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.posts_count %></strong> Posts</span>
+  <span class="m-3 font-light text-gray-500 dark:text-gray-400"> Last active <strong class="font-semibold text-gray-900 text-black"><%= @group.last_active %></strong> days ago</span>
 </p>
 <% if !current_user.joined?(@group) %>
-  <button type="button" class="mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"> Join group</button>
+  <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Join group</button>
 <% end %>
-
+</div>
+<hr />
 </div>
