@@ -19,12 +19,15 @@ class GroupsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @group.update(group_params)
+    p "new group created by #{group_params[:name]}"
+      if @group.update(user: current_user, name: group_params[:name])
         format.html { redirect_to user_path(@group) }
-        format.json { render :show, status: :ok, location: @group }
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.replace(
+          @group, GroupComponent.new(group: @group, current_user: current_user).render_in(view_context))
+      }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
