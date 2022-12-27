@@ -8,6 +8,15 @@
     <%= link_to 'New group', new_user_group_path(current_user), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <div id="new_group" class="min-w-full hidden">
+      <div class="mx-auto md:w-2/3 w-full">
+      <%= render(NewGroupComponent.new(group: Group.new, current_user: current_user)) %>
+  <%# <h1 class="font-bold text-4xl">New group</h1> %>
+
+  <%# <%= render "form", group: @group %>
+
+</div>
+  </div>
   <div id="groups" class="min-w-full">
       <%= render(GroupComponent.with_collection(@groups)) %>
   </div>
