@@ -1,3 +1,4 @@
 <div>
   <%= button_to "Logout", destroy_user_session_path, method: "delete", data: {trubo: false} %>
+  <%= render(GroupComponent.with_collection(@groups)) %>
 </div>
