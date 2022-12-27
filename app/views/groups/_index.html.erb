@@ -11,11 +11,15 @@
     <%= link_to 'Where I\'m a member', user_path(current_user, filter: "member") %>
   </div>
     <div class="flex justify-between items-center">
-    <%= link_to 'New group', new_user_group_path(current_user), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%# <%= link_to 'New group', new_user_group_path(current_user), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <button href="" class="rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium">
+      Create Group
+    </button>
   </div>
+
 </div>
 
-  <div id="new_group" class="min-w-full hidden">
+  <div id="new_group" class="min-w-full">
       <div class="mx-auto md:w-2/3 w-full">
       <%= render(NewGroupComponent.new(group: Group.new, current_user: current_user)) %>
   <%# <h1 class="font-bold text-4xl">New group</h1> %>

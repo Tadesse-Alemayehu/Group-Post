@@ -13,4 +13,8 @@ class User < ApplicationRecord
     end
     groups
   end
+
+  def join=(group)
+    self.user_groups.create(group: group)
+  end
 end
