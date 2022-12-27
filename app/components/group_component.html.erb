@@ -27,7 +27,6 @@
   </div>
 <% end %>
 <h1><%= @group.name  %></h1>
-
 <p>
   <span><b><%= @group.members_count %></b> Members</span>
   <span><b><%= @group.posts_count %></b> Posts</span>
@@ -36,4 +35,8 @@
 <% if !current_user.joined?(@group) %>
   <button type="button" class=""> Join group</button>
 <% end %>
+<% if can? :manage, @group %>
+ <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<% end %>
+
 </div>

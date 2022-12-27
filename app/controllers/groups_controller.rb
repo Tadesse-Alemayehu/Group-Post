@@ -19,12 +19,11 @@ class GroupsController < ApplicationController
 
   def update
     respond_to do |format|
-    p "new group created by #{group_params[:name]}"
       if @group.update(user: current_user, name: group_params[:name])
         format.html { redirect_to user_path(@group) }
         format.turbo_stream {
         render turbo_stream: turbo_stream.replace(
-          @group, GroupComponent.new(group: @group, current_user: current_user).render_in(view_context))
+          @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -33,11 +32,15 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group.user_groups.destroy_all
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
-      format.json { head :no_content }
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.remove(@group)
+      }
+      format.html { redirect_to user_group_path, notice: "Group was successfully destroyed." }
+      # format.json { head :no_content }
     end
   end
 
