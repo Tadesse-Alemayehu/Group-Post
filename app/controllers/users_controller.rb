@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
-  # load_and_authorize_resource
-  before_action :authenticate_user!
-  def index
-  end
+  before_action :authenticate_user!, :prepare_user
   def show
+  end
+
+  private
+  def prepare_user
     Ability.new(current_user)
     if !params[:filter]
-    @groups = Group.all
+      @groups = Group.all
     elsif params[:filter]=='mine'
-    @groups = Group.where(user: current_user)
+      @groups = current_user.groups
     else params[:filter]=='member'
+      @groups=current_user.joins
     end
-  end
-  def private initialize_user
-
   end
 end

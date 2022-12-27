@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'users#index'
-  resources :users, only: %i[index show] do
-  resources :groups
+  root 'users#show'
+  resources :users, only: %i[show] do
+    resources :groups do
+      resources :posts
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
