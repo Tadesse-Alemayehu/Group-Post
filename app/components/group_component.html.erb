@@ -1,1 +1,7 @@
-<div>Add Group template here</div>
+<div id="<%= dom_id @group %>">
+<h1><%= @group.name  %></h1>
+<p>
+  <span><b><%= @group.members_count %></b> Members</span>
+  <span><b><%= @group.posts_count %></b> Posts</span>
+  <span>Last active<b><%= @group.last_active %></b>days ago</p></span>
+</div>

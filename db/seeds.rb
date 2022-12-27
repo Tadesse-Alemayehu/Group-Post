@@ -10,14 +10,14 @@ User.create!(
   [{name: "", email: "calvin@simplero.com", password: "test1234"},
   {name: "", email: "owais@simplero.com", password: "test1234"}])
 Group.create!(
-  [{user_id: 1, name: "group one"},
-  {user_id: 1, name: "group two"},
-  {user_id: 1, name: "group three"},
-  {user_id: 1, name: "group four"},
-  {user_id: 2, name: "group 2one"},
-  {user_id: 2, name: "group 2two"},
-  {user_id: 2, name: "group 2three"},
-  {user_id: 2, name: "group 2four"}])
+  [{user_id: 1, name: "Calvins' Teaching group"},
+  {user_id: 1, name: "W3C Working Committee"},
+  {user_id: 1, name: "simplero Working group"},
+  {user_id: 1, name: "mongoDB Working group"},
+  {user_id: 2, name: "2Calvins' Teaching group"},
+  {user_id: 2, name: "2W3C Working Committee"},
+  {user_id: 2, name: "2simplero Working group"},
+  {user_id: 2, name: "2mongoDB Working group"},])
 
 UserGroup.create!(
   [{user_id: 1, group_id: 1},

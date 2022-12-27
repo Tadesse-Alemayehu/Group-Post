@@ -8,4 +8,8 @@ class Group < ApplicationRecord
   def posts_count
     self.posts.count
   end
+  def last_active
+    # TODO: return the last active date
+    "not available"
+  end
 end
