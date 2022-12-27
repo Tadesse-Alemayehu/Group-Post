@@ -1,13 +1,24 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
 
-  def edit
+  def join
+    @group = Group.find(params[:group_id])
+    join=UserGroup.new(user: current_user, group: @group)
+    respond_to do |format|
+      if join.save
+        format.html { redirect_to user_path(@group) }
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.replace(
+          @group, GroupComponent.new(group: @group).render_in(view_context))
+      }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
   end
-
   def create
     @group = Group.new(name: group_params[:name])
-    @group.user=current_user
-    current_user.join=(@group)
+    UserGroup.create(user: current_user, group: @group)
     respond_to do |format|
       if @group.save
         format.html { redirect_to user_path(@group) }

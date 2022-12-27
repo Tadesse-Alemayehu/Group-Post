@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'users#show'
   resources :users, only: %i[show] do
     resources :groups do
+      get 'join', to: 'groups#join'
+      get 'leave', to: 'groups#leave'
       resources :posts
     end
   end

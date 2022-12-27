@@ -1,6 +1,11 @@
 <div id="<%= dom_id @group %>">
 <% if can? :manage, @group %>
-    <div id="edit" class="hidden">
+<div id="edit_<%= @group.id%>" class=" bg-slate-600 bg-opacity-50  w-screen h-screen top-0 absolute left-0 hidden">
+      <div class=" bg-gray-300 absolute p-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+      <button type="button" class="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto flex items-center hover:bg-pink-600 hover:text-white" data-modal-toggle="defaultModal">
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
     <%= form_with(model: @group, class: "contents", url: user_group_path(user_id: current_user, id: @group.id)) do |form| %>
     <% if @group.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -26,6 +31,7 @@
      <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
   <% end %>
   </div>
+</div>
 <% end %>
 <h1 class="text-xl text-sky-700 m-3"><%= @group.name  %></h1>
 <div class="flex justify-between items-center ">
@@ -35,8 +41,15 @@
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"> Last active <strong class="font-semibold text-gray-900 text-black"><%= @group.last_active %></strong> days ago</span>
 </p>
 <% if !current_user.joined?(@group) %>
-  <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Join group</button>
+<%= link_to 'Join group', user_group_join_path(user_id: current_user.id, group_id: @group.id), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+
+  <% elsif !can? :manage, @group %>
+  <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Leave</button>
 <% end %>
+  <% if can? :manage, @group %>
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Manage </button>
+
+  <% end %>
 </div>
 <hr />
 </div>
