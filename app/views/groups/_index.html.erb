@@ -15,11 +15,7 @@
       </button>
   </div>
 
-  <div id="new_group" class="min-w-full hidden">
-        <div class="mx-auto md:w-2/3 w-full">
         <%= render(NewGroupComponent.new(group: Group.new)) %>
-      </div>
-  </div>
   <div id="groups" class="min-w-full">
 
       <%= render(GroupComponent.with_collection(@groups)) %>

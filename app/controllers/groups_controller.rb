@@ -32,17 +32,19 @@ class GroupsController < ApplicationController
     end
   end
   def create
-    @group = Group.new(name: group_params[:name])
-    UserGroup.create(user: current_user, group: @group)
+    group = Group.new(user: current_user,name: group_params[:name])
+    p "newname #{group.save!}, #{group_params[:name]}"
     respond_to do |format|
-      if @group.save
-        format.html { redirect_to user_path(@group) }
-      else
-        format.html { render :new, status: :unprocessable_entity }
+      if group.save!
+        UserGroup.create!(user: current_user, group: group)
       end
+        format.html { redirect_to user_path(current_user) }
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.prepend(
+          'groups', GroupComponent.new(group: group).render_in(view_context))
+      }
     end
   end
-
   def update
     respond_to do |format|
       if @group.update(user: current_user, name: group_params[:name])
