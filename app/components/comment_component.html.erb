@@ -3,13 +3,6 @@
 <p><strong><%= comment.user.email %></strong> commented <strong>Not availabel</strong> days a go
  <button class="inline font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" data-action="modal#toggleReplay" target="replay_to_<%=comment.id%>">Replay</button>
 <div data-modal-target="replay" class="hidden" id="replay_to_<%=comment.id%>">
-  <%= form_with(model: Comment.new, url: user_group_post_comments_path(user_id: current_user.id, group_id: comment.id, post_id: comment.id, comment_id: comment.id)) do |f| %>
-  <div class="field">
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit "data-action": "modal#toggleReplay", target: "replay_to_#{comment.id}"%>
-  </div>
-<% end %>
+  <%= render(NewCommentComponent.new(comment: Comment.new, contents: comment)) %>
 </div>
 </p>

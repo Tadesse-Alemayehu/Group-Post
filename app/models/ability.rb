@@ -8,6 +8,7 @@ class Ability
     can :manage, Group, user: user
     can :read, Group
     can :manage, Post, user: user
+    can :manage, Comment, user: user
     can :manage, User, id: user.id
     # Define abilities for the user here. For example:
     #

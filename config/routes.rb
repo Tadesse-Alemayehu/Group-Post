@@ -1,8 +1,4 @@
-Rails.application.routes.draw do
-  get 'comments/create'
-  get 'comments/update'
-  get 'comments/destroy'
-  devise_for :users
+Rails.application.routes.draw do   devise_for :users
   root "users#show"
   resources :users, only: %i[show] do
     get 'posts', to: 'users#posts'
