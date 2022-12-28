@@ -83,3 +83,5 @@ gem "devise", "~> 4.8"
 gem "cancancan", "~> 3.4"
 
 gem "view_component", "~> 2.80"
+
+gem "font-awesome-rails", "~> 4.7"

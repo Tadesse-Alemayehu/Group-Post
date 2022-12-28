@@ -13,7 +13,7 @@
 <div id="Grop_members">
   <h2 class="text-xl"> Members </h2>
   <%@group.user_groups.each do |member|%>
-  <div id="<%= member.id%>"><%= member.user.email%> <span class=""></span></div>
+  <div id="<%= member.id%>"><%= member.user.email%><i class="fa fa-camera-retro"></i> <span class=""></span></div>
   <% end %>
 </div>
 
