@@ -68,7 +68,6 @@ class GroupsController < ApplicationController
         render turbo_stream: turbo_stream.remove(@group)
       }
       format.html { redirect_to user_group_path, notice: "Group was successfully destroyed." }
-      # format.json { head :no_content }
     end
   end
 

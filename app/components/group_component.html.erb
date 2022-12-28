@@ -33,8 +33,7 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
     <div class="inline">
       <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}" %>
     </div>
-     <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium", "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}"  %>
-  <% end %>
+  <% end %>     <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium", "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}"  %>
   </div>
 </div>
 <% end %>
