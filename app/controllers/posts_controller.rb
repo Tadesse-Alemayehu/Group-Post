@@ -13,7 +13,16 @@ class PostsController < ApplicationController
   end
 
   def update
-    
+
+    respond_to do |format|
+      if @post.update(param_filter)
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.update(
+          'active-content', ShowPostComponent.new(post: @post).render_in(view_context))
+      }
+        format.html { redirect_to user_path(current_user) }
+      end
+    end
   end
 
   def destroy
