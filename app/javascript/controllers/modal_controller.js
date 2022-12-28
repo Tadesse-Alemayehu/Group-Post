@@ -6,10 +6,9 @@ export default class extends Controller {
     console.log("Hello, Stimulus!", this.modValue);
   }
   toggleManageGroup(event) {
-    console.log(event.target);
-    console.log(event.target.value);
+    event.stopPropagation();
     document
-      .getElementById(event.target.getAttribute("value"))
+      .getElementById(event.target.getAttribute("target"))
       .classList.toggle("hidden");
   }
 }
