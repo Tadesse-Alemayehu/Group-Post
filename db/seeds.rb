@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.create!(
-  [{name: "", email: "calvin@simplero.com", password: "test1234"},
-  {name: "", email: "owais@simplero.com", password: "test1234"}])
+  [{name: "", email: "calvin@simplero.com", password: "simplero"},
+  {name: "", email: "owais@simplero.com", password: "simplero"}])
 Group.create!(
   [{user_id: 1, name: "Calvins' Teaching group"},
   {user_id: 1, name: "W3C Working Committee"},
@@ -32,3 +32,4 @@ UserGroup.create!(
   {user_id: 2, group_id: 6},
   {user_id: 2, group_id: 7},
   {user_id: 2, group_id: 8}]);
+  

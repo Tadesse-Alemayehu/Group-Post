@@ -1,6 +1,6 @@
 <div id="main-container" class="w-screen">
-  <div id="active-content">
     <%= render(NavbarComponent.new()) %>
+  <div id="active-content">
   <%= render "/groups/index", locals: {groups: @groups} %>
   </div>
 </div>
