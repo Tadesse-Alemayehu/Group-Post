@@ -8,7 +8,7 @@ class UsersController < ApplicationController
           render turbo_stream: turbo_stream.update(
             'active-content', partial: "posts/index", locals: {groups: @groups})
         }
-      format.html
+          format.html { redirect_to user_path(current_user)}
       end
   end
   def groups
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
           render turbo_stream: turbo_stream.update(
             'active-content', partial: "groups/index", locals: {groups: @groups})
         }
-      format.html
+          format.html { redirect_to user_path(current_user)}
       end
   end
 
