@@ -1,0 +1,39 @@
+<%post=@post %>
+<div id="<%= dom_id post%>" data-controller="modal" >
+<div id="show<%= dom_id post%>" data-modal-target="show" class="hidden">
+  <h2 class="text-xl text-sky-700 m-3 space-x-5"><%= post.title %>
+</h2>
+    <% if can? :manage, post %>
+      <span class="border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500">Delete post<i class=" ml-3 fa-regular fa-circle-xmark"></i></span>
+      <button data-action="modal#togglePostUpdate">
+        <span class="border-solid border-2 border-sky-500 rounded-lg p-2 inline-block text-sky-500">Update post<i class="ml-3 fa-sharp fa-solid fa-pen-nib"></i></span>
+      </button>
+    <% end %>
+<% post.body.split("\n").each do |text| %>
+<p class="leading-8"><%= text %>
+</p>
+<% end %>
+</div>
+<div id="update<%= dom_id @post %>" class="" data-modal-target="update">
+<%= form_with(model: post, class: "contents", url: user_group_post_path(user_id: current_user, group_id: post.group.id))  do |form| %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
+    "data-action": "modal#togglePostUpdate", target:  "edit_" %>
+  </div>
+
+<% end %>
+<button type="cancel" class="rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
+    data-action="modal#togglePostUpdate"> Cancel </button>
+</div>
+<h2 class="text-xl text-sky-700 m-3 space-x-5">Comments</h2>
+</div>
+
