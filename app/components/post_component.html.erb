@@ -1,6 +1,6 @@
 <% post=@post %>
 <div id="<%= dom_id post %>">
   <h2> <%= post.title %></h2>
-  <p> <%= post.body.slice(0,400)+"..." %></p>
-  <%= link_to 'see post', user_group_post_path(id: post, group_id: post.group.id),  data: {turbo_stream: ""}, method: "get" %>
+  <p class="inline"> <%= post.body.slice(0,400)+"..." %></p>
+  <%= link_to 'see post', user_group_post_path(id: post, group_id: post.group.id),  data: {turbo_stream: ""}, method: "get", class: " inline font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3"%>
 </div>

@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
   private
   def set_post
-    @post=Post.find(params[:id])
+    @post=Post.includes(:user, :group).find(params[:id])
   end
   def param_filter
     params.require(:post).permit(:title, :body)
