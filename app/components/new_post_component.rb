@@ -2,9 +2,8 @@
 
 class NewPostComponent < ViewComponent::Base
 include ActionController::Base::HelperMethods
-  def initialize(post:, group:)
+  def initialize(post:)
     @post = post
-    @group = group
   end
 
 end

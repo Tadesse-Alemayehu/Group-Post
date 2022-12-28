@@ -1,11 +1,20 @@
-<div>
-  <% if current_user.joined?(@group) %>
-  <div id="new_post">
-    <%= render(NewPostComponent.new(post: Post.new, group: @group)) %>
-  </div>
+<div class="grid grid-cols-3 gap-4">
+  <div class="col-span-2">
+    <% if current_user.joined?(@group) %>
+    <div id="new_post">
+      <%= render(NewPostComponent.new(post: Post.new)) %>
+    </div>
+    <% end %>
+    <h1 class="text-xl">All posts</h1>
+    <div id="posts" class="min-w-full">
+      <%= render(PostComponent.with_collection(@posts)) %>
+    </div>
+</div>
+<div id="Grop_members">
+  <h2 class="text-xl"> Members </h2>
+  <%@group.user_groups.each do |member|%>
+  <div id="<%= member.id%>"><%= member.user.email%> <span class=""></span></div>
   <% end %>
-  <h1 class="text-xl">All posts</h1>
-  <div id="posts" class="min-w-full">
-    <%= render(PostComponent.with_collection(@posts)) %>
-  </div>
+</div>
+
 </div>

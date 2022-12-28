@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     respond_to do |format|
         format.turbo_stream {
         render turbo_stream: turbo_stream.update(
-          'active-content', PostComponent.new(post: @post).render_in(view_context))
+          'active-content', ShowPostComponent.new(post: @post).render_in(view_context))
       }
         format.html { redirect_to user_path(current_user) }
       end
