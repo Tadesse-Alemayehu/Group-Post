@@ -10,7 +10,8 @@
       <%= link_to 'Created by me', user_path(current_user, filter: "mine"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" %>
       <%= link_to 'Where I\'m a member', user_path(current_user, filter: "member"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" %>
     </div>
-      <button href="" class=" inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium">
+      <button href="" class=" inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+      data-controller="modal" data-action="modal#toggleManageGroup" target="edit_">
         Create Group
       </button>
   </div>
