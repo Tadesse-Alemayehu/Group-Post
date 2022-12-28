@@ -1,6 +1,6 @@
 <%post=@post %>
 <div id="<%= dom_id post%>" data-controller="modal" >
-<div id="show<%= dom_id post%>" data-modal-target="show" class="">
+<div id="show<%= dom_id post%>" data-modal-target="show-post-content" class="">
   <h2 class="text-xl text-sky-700 m-3 space-x-5"><%= post.title %>
 </h2>
     <% if can? :manage, post %>
@@ -14,7 +14,7 @@
 </p>
 <% end %>
 </div>
-<div id="update<%= dom_id @post %>" class="hidden" data-modal-target="update">
+<div id="update<%= dom_id @post %>" class="hidden" data-modal-target="update-post-content">
 <%= form_with(model: post, class: "contents", url: user_group_post_path(user_id: current_user, group_id: post.group.id,id: post))  do |form| %>
 
   <div class="my-5">

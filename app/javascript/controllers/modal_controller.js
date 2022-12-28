@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = ["show", "update"];
+  static targets = ["show-post-content", "update-post-content"];
   connect() {
     console.log("Hello, Stimulus!", this.modValue);
   }
@@ -13,9 +13,10 @@ export default class extends Controller {
       .classList.toggle("hidden");
   }
 
-  togglePostUpdate(event) {
-    console.log(event);
-    this.showTarget.classList.toggle("hidden");
-    this.updateTarget.classList.toggle("hidden");
+  togglePostUpdate() {
+    console.log(this["show-post-contentTarget"]);
+    console.log(this["show-post-contentTarget"]);
+    this["show-post-contentTarget"].classList.toggle("hidden");
+    this["update-post-contentTarget"].classList.toggle("hidden");
   }
 }
