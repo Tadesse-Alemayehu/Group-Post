@@ -30,9 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
-        # @groups = Group.includes(:user_groups)
-        @posts=Post.where(group_id: 1)
-    @group=Group.find(1)
+        @groups = Group.includes(:user_groups)
   end
   private
   def prepare_user

@@ -1,6 +1,9 @@
 <div>
-
-  <%= render(NewPostComponent.new(post: Post.new, group: @group)) %>
+  <% if current_user.joined?(@group) %>
+  <div id="new_post">
+    <%= render(NewPostComponent.new(post: Post.new, group: @group)) %>
+  </div>
+  <% end %>
   <div id="posts" class="min-w-full">
     <%= render(PostComponent.with_collection(@posts)) %>
   </div>

@@ -1,7 +1,7 @@
 
 <div id="<%= dom_id @post %>" data-controller="modal">
 
-<%= form_with(model: @post, class: "contents", url: user_group_posts_path(current_user, @group))  do |form| %>
+<%= form_with(model: @post, class: "contents", url: user_group_posts_path(user_id: current_user, group_id: @group.id))  do |form| %>
 
   <div class="my-5">
     <%= form.label :title %>
