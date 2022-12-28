@@ -25,11 +25,19 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+
+    @comment.destroy
+    respond_to do |format|
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.remove(@comment)
+      }
+      format.html { redirect_to user_path(current_user) }
+    end
   end
 
   private
   def set_comment
-    @comment=Comment.includes(:user, :post).find(params[:id])
+    @comment=Comment.includes(:contents).find(params[:id])
   end
   def comment_params
     params.require(:comment).permit(:body)
