@@ -60,6 +60,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.user_groups.destroy_all
+    @group.posts.destroy_all
     @group.destroy
 
     respond_to do |format|
