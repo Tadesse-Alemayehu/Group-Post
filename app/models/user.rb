@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :groups # can create many groups
   has_many :user_groups #can join many group
   has_many :posts #can join many group
+  has_many :comments #can join many group
 
   def joined
     groups = []
