@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'users#show'
+  root "users#show"
   resources :users, only: %i[show] do
     resources :groups do
       get 'join', to: 'groups#join'
