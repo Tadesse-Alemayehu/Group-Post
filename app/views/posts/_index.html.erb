@@ -1,5 +1,7 @@
 <div>
 
- <%= render(NewPostComponent.new(post: Post.new)) %>
- <%= render(PostComponent.with_collection(@posts)) %>
+  <%= render(NewPostComponent.new(post: Post.new, group: @group)) %>
+  <div id="posts" class="min-w-full">
+    <%= render(PostComponent.with_collection(@posts)) %>
+  </div>
 </div>

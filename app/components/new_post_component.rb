@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class NewPostComponent < ViewComponent::Base
-  def initialize(post:)
+include ActionController::Base::HelperMethods
+  def initialize(post:, group:)
     @post = post
+    @group = group
   end
 
 end

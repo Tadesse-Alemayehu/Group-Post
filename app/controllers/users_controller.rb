@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, :prepare_user
 
   def posts
+    @group=Group.find(params[:group_id])
           @posts=Post.where(group_id: params[:group_id])
       respond_to do |format|
           format.turbo_stream {
@@ -29,7 +30,9 @@ class UsersController < ApplicationController
   end
 
   def show
-        @groups = Group.includes(:user_groups)
+        # @groups = Group.includes(:user_groups)
+        @posts=Post.where(group_id: 1)
+    @group=Group.find(1)
   end
   private
   def prepare_user

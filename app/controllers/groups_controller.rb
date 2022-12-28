@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
           @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to user_path(current_user)}
       end
     end
   end
@@ -27,13 +27,12 @@ class GroupsController < ApplicationController
           @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to user_path(current_user)}
       end
     end
   end
   def create
     group = Group.new(user: current_user,name: group_params[:name])
-    p "newname #{group.save!}, #{group_params[:name]}"
     respond_to do |format|
       if group.save!
         UserGroup.create!(user: current_user, group: group)
@@ -48,13 +47,13 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(user: current_user, name: group_params[:name])
-        format.html { redirect_to user_path(@group) }
+        # format.html { redirect_to user_path(@group) }
         format.turbo_stream {
         render turbo_stream: turbo_stream.replace(
           @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to user_path(current_user)}
       end
     end
   end
@@ -67,7 +66,7 @@ class GroupsController < ApplicationController
       format.turbo_stream {
         render turbo_stream: turbo_stream.remove(@group)
       }
-      format.html { redirect_to user_group_path, notice: "Group was successfully destroyed." }
+      format.html { redirect_to user_path(current_user)}
     end
   end
 

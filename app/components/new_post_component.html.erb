@@ -1,1 +1,21 @@
-<div>Add NewPost template here</div>
+
+<div id="<%= dom_id @post %>" data-controller="modal">
+
+<%= form_with(model: @post, class: "contents", url: user_group_posts_path(current_user, @group))  do |form| %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
+    "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
