@@ -3,8 +3,10 @@
 <div id="show<%= dom_id post%>" data-modal-target="show-post-content" class="">
   <h2 class="text-xl text-sky-700 m-3 space-x-5"><%= post.title %>
 </h2>
-    <% if can? :manage, post %>
-      <span class="border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500">Delete post<i class=" ml-3 fa-regular fa-circle-xmark"></i></span>
+    <% if (can? :manage, post) ||  (can? :manage, post.group) %>
+<form class="inline-block" method="delete" action="<%= user_group_post_path(user_id: current_user.id, group_id: post.group.id) %>"><input type="hidden" name="_method" value="delete" autocomplete="off">
+<button class="border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500" type="submit">Delete post<i class=" ml-3 fa-regular fa-circle-xmark"></i></span></button><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off"></form>
+      <%# <span class="border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500">Delete post<i class=" ml-3 fa-regular fa-circle-xmark"></i></span> %>
       <button data-action="modal#togglePostUpdate">
         <span class="border-solid border-2 border-sky-500 rounded-lg p-2 inline-block text-sky-500">Update post<i class="ml-3 fa-sharp fa-solid fa-pen-nib"></i></span>
       </button>

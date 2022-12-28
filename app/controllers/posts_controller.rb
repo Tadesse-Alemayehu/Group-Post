@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @post.update(param_filter)
         format.turbo_stream {
@@ -26,6 +25,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.comments.destroy_all
+    @post.destroy
+    redirect_to user_path(current_user)
   end
 
   def create
