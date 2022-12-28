@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/update'
-  get 'posts/destroy'
-  get 'posts/create'
+
   devise_for :users
   root "users#show"
   resources :users, only: %i[show] do
+    get 'posts', to: 'users#posts'
+    get 'groups', to: 'users#groups'
     resources :groups do
       get 'join', to: 'groups#join'
       get 'leave', to: 'groups#leave'

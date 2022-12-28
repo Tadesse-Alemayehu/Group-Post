@@ -6,9 +6,9 @@
 
   <div class="heading flex justify-between">
     <div class="border-2 border-sky-500 inline p-3">
-      <%= link_to 'All Group', user_path(current_user), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" %>
-      <%= link_to 'Created by me', user_path(current_user, filter: "mine"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" %>
-      <%= link_to 'Where I\'m a member', user_path(current_user, filter: "member"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" %>
+      <%= link_to 'All Group', user_groups_path(current_user), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3", data: {turbo_stream: ""} %>
+      <%= link_to 'Created by me', user_groups_path(current_user, filter: "mine"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3", data: {turbo_stream: ""} %>
+      <%= link_to 'Where I\'m a member', user_groups_path(current_user, filter: "member"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3", data: {turbo_stream: ""} %>
     </div>
       <button href="" class=" inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
       data-controller="modal" data-action="modal#toggleManageGroup" target="edit_">
