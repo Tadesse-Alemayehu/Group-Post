@@ -37,8 +37,8 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
   </div>
 </div>
 <% end %>
-<h1 class="text-xl text-sky-700 m-3"><%= @group.name  %></h1>
-<div class="flex justify-between items-center ">
+<%= link_to "#{@group.name}...", user_path(group_id: @group.id, active: "posts"), class: "text-xl text-sky-700 m-3", data: {turbo_stream: ""} %>
+<div class="flex justify-between items-center">
   <p class="pl-10 ">
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.members_count %></strong> Members</span>
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.posts_count %></strong> Posts</span>

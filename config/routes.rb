@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/update'
+  get 'posts/destroy'
+  get 'posts/create'
   devise_for :users
   root "users#show"
   resources :users, only: %i[show] do
