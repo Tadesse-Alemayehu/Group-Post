@@ -1,8 +1,13 @@
 <% comment=@comment %>
 <p><%= comment.body %></p>
-<p><strong><%= comment.user.email %></strong> commented <strong>Not availabel</strong> days a go
+<strong><%= comment.user.email %></strong> commented <strong>Not availabel</strong> days a go
  <button class="inline font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3" data-action="modal#toggleReplay" target="replay_to_<%=comment.id%>">Replay</button>
+ <% if can? :manage, comment %>
+<form class="inline-block" method="delete" action="<%= user_group_post_comment_path(user_id: current_user.id, group_id: comment.id, post_id: comment.id, id: comment.id) %>"><input type="hidden" name="_method" value="delete" autocomplete="off">
+<button class="inline font-medium text-red-600 dark:text-red-500 hover:underline md:p-3" type="submit">Delete</span></button><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off"></form>
+ <% end %>
+
 <div data-modal-target="replay" class="hidden" id="replay_to_<%=comment.id%>">
   <%= render(NewCommentComponent.new(comment: Comment.new, contents: comment)) %>
 </div>
-</p>
+
