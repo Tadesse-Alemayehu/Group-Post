@@ -38,8 +38,13 @@
 </div>
 <div id="comments">
 <h2 class="text-xl text-sky-700 m-3 space-x-5">Comments</h2>
-<% post.comments.each do |commnet|%>
+<% post.comments.each do |comment|%>
 <%= render(CommentComponent.new(comment: comment)) %>
+  <% comment.comments.each do |sub_comment|%>
+  <div class="sub_comment ml-4">
+    <%= render(CommentComponent.new(comment: sub_comment)) %>
+  </div>
+  <% end %>
 <% end %>
 </div>
 </div>
