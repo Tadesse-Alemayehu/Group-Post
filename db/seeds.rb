@@ -218,3 +218,26 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
  commodo consequat. Duis aute irure doloasdas aa.
 " }])
+
+
+Comment.create!([
+{user_id: 1, contents: 1, body: "USER 1 COMMENT 1 ON POST 1"},
+{user_id: 1, post_id: 2, body: "USER 1 COMMENT 1 ON POST 2"},
+{user_id: 1, post_id: 3, body: "USER 1 COMMENT 1 ON POST 3"},
+{user_id: 1, post_id: 4, body: "USER 1 COMMENT 1 ON POST 3"},
+{user_id: 1, post_id: 5, body: "USER 1 COMMENT 1 ON POST 5"},
+{user_id: 1, post_id: 6, body: "USER 1 COMMENT 1 ON POST 6"},
+{user_id: 2, post_id: 1, body: "USER 2 COMMENT 1 ON POST 1"},
+{user_id: 2, post_id: 2, body: "USER 2 COMMENT 1 ON POST 2"},
+{user_id: 2, post_id: 3, body: "USER 2 COMMENT 1 ON POST 3"},
+{user_id: 2, post_id: 4, body: "USER 2 COMMENT 1 ON POST 3"},
+{user_id: 2, post_id: 5, body: "USER 2 COMMENT 1 ON POST 5"},
+{user_id: 2, post_id: 6, body: "USER 2 COMMENT 1 ON POST 6"},
+])
+
+# Comment.create([
+# {user_id: 2, comment_id: 1, body: "USER 2 replay 1 ON POST 1"},
+# {user_id: 2, comment_id: 2, body: "USER 2 replay 2 ON POST 2"},
+# {user_id: 1, comment_id: 6, body: "USER 1 replay 1 ON POST 6"},
+# {user_id: 1, comment_id: 7, body: "USER 1 replay 2 ON POST 7"},
+# ])

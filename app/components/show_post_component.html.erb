@@ -4,7 +4,7 @@
   <h2 class="text-xl text-sky-700 m-3 space-x-5"><%= post.title %>
 </h2>
     <% if (can? :manage, post) ||  (can? :manage, post.group) %>
-<form class="inline-block" method="delete" action="<%= user_group_post_path(user_id: current_user.id, group_id: post.group.id) %>"><input type="hidden" name="_method" value="delete" autocomplete="off">
+<form class="inline-block" method="delete" action="<%= user_group_post_path(user_id: current_user.id, group_id: post.group.id, id: post.id) %>"><input type="hidden" name="_method" value="delete" autocomplete="off">
 <button class="border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500" type="submit">Delete post<i class=" ml-3 fa-regular fa-circle-xmark"></i></span></button><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off"></form>
       <%# <span class="border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500">Delete post<i class=" ml-3 fa-regular fa-circle-xmark"></i></span> %>
       <button data-action="modal#togglePostUpdate">
@@ -36,6 +36,11 @@
 <button type="cancel" class="rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
     data-action="modal#togglePostUpdate"> Cancel </button>
 </div>
+<div id="comments">
 <h2 class="text-xl text-sky-700 m-3 space-x-5">Comments</h2>
+<% post.comments.each do |commnet|%>
+<%= render(CommentComponent.new(comment: comment)) %>
+<% end %>
+</div>
 </div>
 

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def posts
     @group=Group.find(params[:group_id])
-          @posts=Post.includes(:user, :group).where(group_id: params[:group_id])
+          @posts=Post.includes(:user, :group, :comments).where(group_id: params[:group_id])
       respond_to do |format|
           format.turbo_stream {
           render turbo_stream: turbo_stream.update(
