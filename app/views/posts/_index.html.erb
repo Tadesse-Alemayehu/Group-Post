@@ -4,6 +4,7 @@
     <%= render(NewPostComponent.new(post: Post.new, group: @group)) %>
   </div>
   <% end %>
+  <h1 class="text-xl">All posts</h1>
   <div id="posts" class="min-w-full">
     <%= render(PostComponent.with_collection(@posts)) %>
   </div>

@@ -1,7 +1,16 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:destroy, :update]
+  before_action :set_post, only: [:destroy, :update, :show]
   before_action :param_filter, only: [:create]
 
+  def show
+    respond_to do |format|
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.update(
+          'active-content', PostComponent.new(post: @post).render_in(view_context))
+      }
+        format.html { redirect_to user_path(current_user) }
+      end
+  end
 
   def update
   end
@@ -10,7 +19,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    p "the new param is #{param_filter}"
         post = Post.new(title: param_filter[:title],body: param_filter[:body],user_id: params[:user_id],
           group_id: params[:group_id])
     respond_to do |format|
