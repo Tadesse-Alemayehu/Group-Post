@@ -4,9 +4,9 @@
 <% def  remder(comment)%>
 <% return if comment.nil?%>
   <% comment.comments.each do |sub_comment|%>
-  <div class="sub_comment ml-4" id="<%= dom_id sub_comment%>">
+  <div class="sub_comment ml-12 border-l-4 border-neutral-400 m-4 p-4" id="<%= dom_id sub_comment%>">
     <%= render(CommentComponent.new(comment: sub_comment)) %>
-   <%remder(sub_comment)%>
+    <%remder(sub_comment)%>
   </div>
   <% end %>
 <% end %>
