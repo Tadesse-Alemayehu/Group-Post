@@ -28,7 +28,6 @@ export default class extends Controller {
     document
       .getElementById(event.target.getAttribute("target"))
       .classList.add("hidden");
-    console.log(event.target.getAttribute("target"));
   }
 
   togglePostUpdate() {

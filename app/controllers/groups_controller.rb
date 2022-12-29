@@ -46,7 +46,7 @@ class GroupsController < ApplicationController
   def edit
      respond_to do |format|
         format.turbo_stream {
-        render turbo_stream: turbo_stream.update(
+        render turbo_stream: turbo_stream.prepend(
           @group, NewGroupComponent.new(group: @group).render_in(view_context))
       }
         format.html { redirect_to user_path(current_user)}

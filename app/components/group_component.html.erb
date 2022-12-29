@@ -1,5 +1,5 @@
-<% url=request.base_url.slice(0,request.original_url.length-1) %>
-<div id="<%= dom_id @group %>" data-controller="modal" data-modal-target="url" value="<%=url+user_group_path(user_id: current_user, id: @group.id)%>">
+<% url=request.base_url.slice(0,request.original_url.length-1)+edit_user_group_path(user_id: current_user, id: @group.id) %>
+<div id="<%= dom_id @group %>" data-controller="modal" data-modal-target="url" value="<%=url%>">
 
 <%= link_to "#{@group.name}...", user_posts_path(current_user, group_id: @group.id), class: "subtitle text-xl text-sky-700 m-3", data: {turbo_stream: ""} %>
 <div class="flex justify-between items-center">
