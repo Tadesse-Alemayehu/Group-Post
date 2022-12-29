@@ -1,12 +1,13 @@
-# Simplero take homne project 
+# Simplero take home project 
 
-> This is a single page application with turbo-stream, stimulus and view-component. 
+> This is a single page application with turbo-stream, stimulus and view-component. I intend to mock a feature that are known for a front end library. like reusing components and rendering inplace. 
 
 ## Built With
 
-- ROR
+- Rails 7
+
 ## schema design 
-![plot](https://github.com/orozCoding/Tadesse-Alemayehu-take-home-project/blob/main/Intial%20schema.jpg?raw=true).
+![Schema Design](https://github.com/orozCoding/Tadesse-Alemayehu-take-home-project/blob/main/Intial%20schema.jpg?raw=true).
 ## primary features
 
 https://user-images.githubusercontent.com/69077061/209985380-bc6bada4-62a9-473c-beff-6169810c175c.mp4
