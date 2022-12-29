@@ -3,13 +3,13 @@
 
 <%= form_with(model: @post, class: "contents", url: user_group_posts_path(user_id: current_user, group_id: params[:group_id]))  do |form| %>
 
-  <div class="my-5">
+  <div class="my-5 p">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, class: "dark:bg-slate-800 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="my-5">
+  <div class="my-5 p">
     <%= form.label :body %>
-    <%= form.text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :body, class: " dark:bg-slate-800 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="inline">
     <%= form.submit class: "overlay-btn blue",

@@ -27,7 +27,7 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
 
     <div class="my-5">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :name, class: "dark:bg-slate-800 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="inline">
@@ -37,7 +37,7 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
   </div>
 </div>
 <% end %>
-<%= link_to "#{@group.name}...", user_posts_path(current_user, group_id: @group.id), class: "text-xl text-sky-700 m-3", data: {turbo_stream: ""} %>
+<%= link_to "#{@group.name}...", user_posts_path(current_user, group_id: @group.id), class: "subtitle text-xl text-sky-700 m-3", data: {turbo_stream: ""} %>
 <div class="flex justify-between items-center">
   <p class="pl-10 ">
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.members_count %></strong> Members</span>
@@ -55,5 +55,5 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
 
   <% end %>
 </div>
-<hr />
+<hr class="mt-2 mb-3"/>
 </div>
