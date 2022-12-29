@@ -11,12 +11,14 @@
       <%= render(PostComponent.with_collection(@posts)) %>
     </div>
 </div>
-<div id="Grop_members" class="p">
+<div id="group_members" class="p">
   <h2 class="text-xl"> Members </h2>
   <%@group.user_groups.each do |member|%>
-  <div id="<%= member.id%>"><%= member.user.email%>
-    <% if can? :manage, @group %>
-      <i class="fa-regular fa-circle-xmark text-red-600"></i>
+  <div id="<%= dom_id member.user%>">
+  <%= member.user.email%>
+<%# oly the members can be removed (group admin cannot leave the group but can delete the group itself) %>
+    <% if (can? :manage, @group )&& (!member.user.is_admin?(@group))%>
+      <%= link_to raw('<i class="fa-regular fa-circle-xmark text-red-600"></i>'), user_group_leave_path(member_id: member.user.id, group_id: @group.id), data: {turbo_stream: ""}  %>
     <% end %>
  </div>
   <% end %>

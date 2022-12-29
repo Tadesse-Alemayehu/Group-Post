@@ -16,7 +16,24 @@ class GroupsController < ApplicationController
       end
     end
   end
+
     def leave
+      if params[:member_id]
+        # only an admin of the group can remove a member
+        group = Group.find(params[:group_id])
+        member=User.find(params[:member_id])
+        if can? :update, group
+          join=UserGroup.find_by(user: member, group: group)
+          join.destroy
+          respond_to do |format|
+            format.turbo_stream {
+              render turbo_stream: turbo_stream.remove(member)
+            }
+          end
+        end
+            return
+      end
+      #everyone can leave a group they are a member of
     @group = Group.find(params[:group_id])
     join=UserGroup.find_by(user: current_user, group: @group)
     respond_to do |format|
@@ -85,6 +102,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    # server side authorization
     unless current_user.is_admin?(@group)
       redirect_to user_path(current_user), notice: "You are not authorized to delete this group"
       return
