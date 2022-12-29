@@ -15,7 +15,7 @@ https://user-images.githubusercontent.com/69077061/209985380-bc6bada4-62a9-473c-
 
 ## Go Live 😎
 
-#### Comming soon
+#### [See me Live](https://simplero-cuxb.onrender.com/)
 
 ## Authors
 
