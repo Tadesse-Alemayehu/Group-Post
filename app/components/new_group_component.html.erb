@@ -1,7 +1,7 @@
 <div id="<%= dom_id @group %>" data-controller="modal">
 
 <% if (can? :manage, @group )|| (@group.new_record?)%>
-<div id="edit_<%= @group.id%>" class=" bg-slate-600 bg-opacity-50  w-screen h-screen top-0 fixed left-0 hidden"
+<div id="edit_<%= @group.id%>" class=" bg-slate-600 bg-opacity-50  w-screen h-screen top-0 fixed left-0"
 data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleManageGroup"
     target="edit_<%= @group.id%>">
       <div class=" dark:bg-gray-800 bg-gray-300 absolute p-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">

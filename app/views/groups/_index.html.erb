@@ -11,12 +11,11 @@
       <%= link_to raw('<i class="fa-solid fa-landmark-dome m-1"></i>Where I\'m a member'), user_groups_path(current_user, filter: "member"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3", data: {turbo_stream: ""} %>
     </div>
       <button href="" class="overlay-btn blue"
-      data-controller="modal" data-action="modal#toggleManageGroup" target="edit_">
+      data-controller="modal" data-action="modal#renderNewGroupForm">
         <i class="fa-solid fa-plus"></i> Create Group
       </button>
   </div>
 
-        <%= render(NewGroupComponent.new(group: Group.new)) %>
   <div id="groups" class="min-w-full">
 
       <%= render(GroupComponent.with_collection(@groups)) %>

@@ -6,11 +6,11 @@ export default class extends Controller {
   connect() {
     console.log("Hello, Stimulus!", this.modValue);
   }
-  toggleManageGroup(event) {
-    event.stopPropagation();
-    document
-      .getElementById(event.target.getAttribute("target"))
-      .classList.toggle("hidden");
+  renderNewGroupForm(event) {
+    console.log("renderNewGroupForm");
+  }
+  renderUpdateForm(event) {
+    console.log("renderUpdateForm");
   }
 
   togglePostUpdate() {

@@ -1,5 +1,5 @@
 <div id="<%= dom_id @group %>" data-controller="modal">
- <%= render(NewGroupComponent.new(group: @group)) %>
+
 <%= link_to "#{@group.name}...", user_posts_path(current_user, group_id: @group.id), class: "subtitle text-xl text-sky-700 m-3", data: {turbo_stream: ""} %>
 <div class="flex justify-between items-center">
   <p class="pl-10 ">
@@ -14,7 +14,7 @@
 <%= link_to raw('<i class="fa-solid fa-person-walking-arrow-right"></i>Leave group'), user_group_leave_path(user_id: current_user.id, group_id: @group.id), class: "overlay-btn" %>
 <% end %>
   <% if can? :manage, @group %>
-    <button type="button" class="overlay-btn green" data-action="modal#toggleManageGroup" target="edit_<%= @group.id%>"> <i class="fa-solid fa-list-check"></i> Manage </button>
+    <button type="button" class="overlay-btn green" data-action="modal#renderUpdateForm" > <i class="fa-solid fa-list-check"></i> Manage </button>
 
   <% end %>
 </div>
