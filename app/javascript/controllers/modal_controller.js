@@ -8,9 +8,7 @@ export default class extends Controller {
     "replay",
     "url",
   ];
-  connect() {
-    console.log("Hello, Stimulus!", this.modValue);
-  }
+  connect() {}
   renderGroupForm(event) {
     const url = this.urlTarget.getAttribute("value");
     fetch(url, {
@@ -21,7 +19,7 @@ export default class extends Controller {
         Turbo.renderStreamMessage(html);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }
   disposeGroupForm(event) {
@@ -31,17 +29,14 @@ export default class extends Controller {
   }
 
   togglePostUpdate() {
-    console.log(this["show-post-contentTarget"]);
-    console.log(this["show-post-contentTarget"]);
     this["show-post-contentTarget"].classList.toggle("hidden");
     this["update-post-contentTarget"].classList.toggle("hidden");
   }
   toggleReplay(event) {
     let ele = this.replayTargets.filter((el) => {
-      console.log(event.target.getAttribute("target"));
       return el.getAttribute("id") == event.target.getAttribute("target");
     })[0];
-    ele.classList.toggle("hidden");
+    ele?.classList.toggle("hidden");
     if (event.target.getAttribute("id") == "cancel") {
       event.preventDefault();
     }

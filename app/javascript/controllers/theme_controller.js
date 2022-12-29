@@ -5,13 +5,11 @@ export default class extends Controller {
   static darkThemeMq = false;
   static targets = ["dark", "light"];
   connect() {
-    console.log("Theme controller connected");
     if (localStorage.getItem("user_theme")) {
       this.darkThemeMq = localStorage.getItem("user_theme") == "dark";
     } else {
       this.darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
     }
-    console.log(this.darkTarget);
     if (this.darkThemeMq) {
       this.darkTarget.classList.add("hidden");
       document.documentElement.classList.add("dark");
