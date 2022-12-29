@@ -1,11 +1,38 @@
-# README
+# Simplero take homne project 
 
-This is a normal rails 7 app created with `rails new` with postgresql as the database and tailwind configured.
+> This is a single page application with turbo-stream, stimulus and view-component. 
 
-As part of the test, you might need to configure and install additional things like view compononents
+## Built With
 
-# Development
+- ROR
+## schema design 
+![plot](https://github.com/orozCoding/Tadesse-Alemayehu-take-home-project/blob/main/Intial%20schema.jpg?raw=true).
+## primary features
 
-* Standard rails 7 workflow.
-* Make sure you create database (rails db:create).
-* Run server with `bin/dev`
+https://user-images.githubusercontent.com/69077061/209985380-bc6bada4-62a9-473c-beff-6169810c175c.mp4
+
+
+## Go Live 😎
+
+#### Comming soon
+
+## Authors
+
+👤 **Tadesse Alemayehu**
+
+- GitHub: [@Tadess-Alemayehu](https://github.com/Tadesse-Alemayehu)
+- Twitter: [@TadesseWebDev](https://twitter.com/TadesseWebDev)
+- LinkedIn: [Tadesse Alemayehu](https://www.linkedin.com/in/tadesse-alemayehu-60141a221/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+- This was a fun project, regardless of getting the position I'm interested in I get to put my skills into action. Thank you [Simplero](https://simplero.com/) for develivering Interesting project.
