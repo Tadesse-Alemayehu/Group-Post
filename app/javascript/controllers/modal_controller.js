@@ -2,15 +2,33 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = ["show-post-content", "update-post-content", "replay"];
+  static targets = [
+    "show-post-content",
+    "update-post-content",
+    "replay",
+    "url",
+  ];
   connect() {
     console.log("Hello, Stimulus!", this.modValue);
   }
-  renderNewGroupForm(event) {
-    console.log("renderNewGroupForm");
+  renderGroupForm(event) {
+    const url = this.urlTarget.getAttribute("value");
+    fetch(url, {
+      headers: { Accept: "text/vnd.turbo-stream.html" },
+    })
+      .then((response) => response.text())
+      .then((html) => {
+        Turbo.renderStreamMessage(html);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-  renderUpdateForm(event) {
-    console.log("renderUpdateForm");
+  disposeGroupForm(event) {
+    document
+      .getElementById(event.target.getAttribute("target"))
+      .classList.add("hidden");
+    console.log(event.target.getAttribute("target"));
   }
 
   togglePostUpdate() {

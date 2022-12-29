@@ -2,10 +2,10 @@
 
 <% if (can? :manage, @group )|| (@group.new_record?)%>
 <div id="edit_<%= @group.id%>" class=" bg-slate-600 bg-opacity-50  w-screen h-screen top-0 fixed left-0"
-data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleManageGroup"
+data-modal-mod-value="edit_<%= @group.id%>"
     target="edit_<%= @group.id%>">
       <div class=" dark:bg-gray-800 bg-gray-300 absolute p-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-      <button type="button" class=" dark:text-pink-600 text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto flex items-center hover:bg-pink-600 dark:hover:bg-slate-600 hover:text-white"  data-action="modal#toggleManageGroup"
+      <button type="button" class=" dark:text-pink-600 text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto flex items-center hover:bg-pink-600 dark:hover:bg-slate-600 hover:text-white"  data-action="modal#disposeGroupForm"
     target="edit_<%= @group.id%>">
           <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" target="edit_<%= @group.id%>">
             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" target="edit_<%= @group.id%>">
@@ -35,7 +35,7 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
-    "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}" %>
+    "data-action": "modal#disposeGroupForm", target:  "edit_#{@group.id}" %>
   </div>
 <% end %>
                   <% else %>
@@ -59,11 +59,11 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
     </div>
 
     <div class="inline">
-      <%= form.submit class: "overlay-btn blue", "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}" %>
+      <%= form.submit class: "overlay-btn blue", "data-action": "modal#disposeGroupForm", target:  "edit_#{@group.id}" %>
     </div>
   <% end %>
 
-     <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "overlay-btn", "data-action": "modal#toggleManageGroup", target:  "edit_#{@group.id}"  %>
+     <%= button_to 'Destroy this group', user_group_path(user_id: current_user, id: @group.id), method: :delete, class: "overlay-btn", "data-action": "modal#disposeGroupForm", target:  "edit_#{@group.id}"  %>
 
                 <% end %>
   </div>

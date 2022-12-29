@@ -31,6 +31,28 @@ class GroupsController < ApplicationController
       end
     end
   end
+
+  def new
+    p request.original_url
+     respond_to do |format|
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.prepend(
+          "new_group", NewGroupComponent.new(group: Group.new).render_in(view_context))
+      }
+        format.html { redirect_to user_path(current_user)}
+      end
+  end
+
+  def edit
+     respond_to do |format|
+        format.turbo_stream {
+        render turbo_stream: turbo_stream.update(
+          @group, NewGroupComponent.new(group: @group).render_in(view_context))
+      }
+        format.html { redirect_to user_path(current_user)}
+      end
+  end
+
   def create
     group = Group.new(user: current_user,name: group_params[:name])
     respond_to do |format|

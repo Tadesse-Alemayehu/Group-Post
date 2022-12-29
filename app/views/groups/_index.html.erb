@@ -1,4 +1,5 @@
 <div class="">
+  <%= url=request.base_url.slice(0,request.original_url.length-1) %>
 <h1 class="title">Groups</h1>
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
@@ -10,10 +11,13 @@
       <%= link_to raw('<i class="fa-solid fa-spa m-1"></i>Created by me'), user_groups_path(current_user, filter: "mine"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3", data: {turbo_stream: ""} %>
       <%= link_to raw('<i class="fa-solid fa-landmark-dome m-1"></i>Where I\'m a member'), user_groups_path(current_user, filter: "member"), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline md:p-3", data: {turbo_stream: ""} %>
     </div>
+    <div data-controller="modal" id="new_group" data-modal-target="url" value="
+    <%=url+new_user_group_path(user_id: current_user.id)%>">
       <button href="" class="overlay-btn blue"
-      data-controller="modal" data-action="modal#renderNewGroupForm">
+       data-action="modal#renderGroupForm">
         <i class="fa-solid fa-plus"></i> Create Group
       </button>
+    </div>
   </div>
 
   <div id="groups" class="min-w-full">
