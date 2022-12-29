@@ -5,7 +5,12 @@ export default class extends Controller {
   connect() {
     console.log("Devise controller connected");
     const loginForm = document.getElementById("new_user");
-    console.log(loginForm);
     loginForm?.classList.add("center");
+  }
+
+  refreshLocation(event) {
+    // since I'm sending a turbo stream the page remains the same unless refreshed on submit
+    window.location.reload();
+    event.target.submit();
   }
 }
