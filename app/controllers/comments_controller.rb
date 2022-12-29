@@ -8,14 +8,16 @@ class CommentsController < ApplicationController
           format.turbo_stream {
           render turbo_stream: turbo_stream.update(
             comment, ShowCommentComponent.new(comment: comment).render_in(view_context))
+
         }
       else
         post=Post.find(params[:post_id])
-        new_comment=Comment.create(user: current_user, post: post, body: comment_params[:body])
+        new_comment=Comment.create(user: current_user, contents: post, body: comment_params[:body])
         format.turbo_stream {
-          render turbo_stream: turbo_stream.prepend(
-            comments, ShowCommentComponent.new(comment: new_comment).render_in(view_context))
-        }
+          render turbo_stream: [
+            turbo_stream.prepend('comments', ShowCommentComponent.new(comment: new_comment).render_in(view_context)),
+          turbo_stream.update("replay_to_#{post.id}", NewCommentComponent.new(comment: Comment.new, contents: post).render_in(view_context))
+        ]}
       end
       format.html { redirect_to user_path(current_user) }
     end

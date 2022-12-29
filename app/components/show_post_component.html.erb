@@ -1,4 +1,4 @@
-c<%post=@post %>
+<%post=@post %>
 <div id="<%= dom_id post%>" data-controller="modal">
 <div id="show<%= dom_id post%>" data-modal-target="show-post-content" class="">
   <h2 class="subtitle text-xl text-sky-700 m-3 space-x-5"><%= post.title %>
@@ -36,11 +36,11 @@ c<%post=@post %>
 <button type="cancel" class="rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer",
     data-action="modal#togglePostUpdate"> Cancel </button>
 </div>
-<div id="comments">
 <h2 class="text-xl text-sky-700 m-3 space-x-5">Comments</h2>
-<div data-modal-target="replay" id="replay_to_<%=post.id%>">
+<div data-modal-target="replay" id="replay_to_<%=post.id%>" id="new_comment">
   <%= render(NewCommentComponent.new(comment: Comment.new, contents: post)) %>
 </div>
+<div id="comments">
 <% post.comments.each do |comment|%>
   <%= render(ShowCommentComponent.new(comment: comment)) %>
 <% end %>
