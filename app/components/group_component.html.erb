@@ -45,13 +45,13 @@ data-modal-mod-value="edit_<%= @group.id%>" data-action="click->modal#toggleMana
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"> Last active <strong class="font-semibold text-gray-900 text-black"><%= @group.last_active %></strong> days ago</span>
 </p>
 <% if !current_user.joined?(@group) %>
-<%= link_to 'Join group', user_group_join_path(user_id: current_user.id, group_id: @group.id), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+<%= link_to raw('<i class="fa-solid fa-arrows-to-circle"></i>Join group'), user_group_join_path(user_id: current_user.id, group_id: @group.id), class: "overlay-btn blue" %>
 
   <% elsif !can? :manage, @group %>
-<%= link_to 'Leave group', user_group_leave_path(user_id: current_user.id, group_id: @group.id), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+<%= link_to raw('<i class="fa-solid fa-person-walking-arrow-right"></i>Leave group'), user_group_leave_path(user_id: current_user.id, group_id: @group.id), class: "overlay-btn" %>
 <% end %>
   <% if can? :manage, @group %>
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-action="modal#toggleManageGroup" target="edit_<%= @group.id%>"> Manage </button>
+    <button type="button" class="overlay-btn green" data-action="modal#toggleManageGroup" target="edit_<%= @group.id%>"> <i class="fa-solid fa-list-check"></i> Manage </button>
 
   <% end %>
 </div>

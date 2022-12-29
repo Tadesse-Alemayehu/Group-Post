@@ -1,5 +1,18 @@
 @tailwind base;
 @tailwind components;
+.overlay-btn {
+  @apply border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500;
+}
+
+.blue {
+  @apply border-sky-500 text-sky-500;
+}
+.green {
+  @apply border-green-500 text-green-500;
+}
+.title {
+  @apply text-3xl text-sky-500 m-3;
+}
 @tailwind utilities;
 
 /*
