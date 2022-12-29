@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def joined?(group)
     self.joined.include?(group)
   end
+  def is_admin?(group)
+    self.groups.include?(group)
+  end
+
 end

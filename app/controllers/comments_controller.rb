@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
           turbo_stream.update("replay_to_#{post.id}", NewCommentComponent.new(comment: Comment.new, contents: post).render_in(view_context))
         ]}
       end
-      format.html { redirect_to user_path(current_user) }
+      format.html { redirect_to user_path(current_user),   notice: "Server is expecting turbo streams hence a SPA"}
     end
   end
 
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
       format.turbo_stream {
         render turbo_stream: turbo_stream.remove(@comment)
       }
-      format.html { redirect_to user_path(current_user) }
+      format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA" }
     end
   end
 

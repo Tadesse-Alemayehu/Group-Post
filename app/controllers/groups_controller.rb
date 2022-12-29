@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
           @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
-        format.html { redirect_to user_path(current_user)}
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
     end
   end
@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
           @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
-        format.html { redirect_to user_path(current_user)}
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
     end
   end
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
         render turbo_stream: turbo_stream.prepend(
           "new_group", NewGroupComponent.new(group: Group.new).render_in(view_context))
       }
-        format.html { redirect_to user_path(current_user)}
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
   end
 
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
         render turbo_stream: turbo_stream.prepend(
           @group, NewGroupComponent.new(group: @group).render_in(view_context))
       }
-        format.html { redirect_to user_path(current_user)}
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
   end
 
@@ -59,7 +59,7 @@ class GroupsController < ApplicationController
       if group.save!
         UserGroup.create!(user: current_user, group: group)
       end
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA" }
         format.turbo_stream {
         render turbo_stream: turbo_stream.prepend(
           'groups', GroupComponent.new(group: group).render_in(view_context))
@@ -67,20 +67,28 @@ class GroupsController < ApplicationController
     end
   end
   def update
+    # server side authorization
+    unless current_user.is_admin?(@group)
+      redirect_to user_path(current_user), notice: "You are not authorized to update this group"
+      return
+    end
     respond_to do |format|
       if @group.update(user: current_user, name: group_params[:name])
-        # format.html { redirect_to user_path(@group) }
         format.turbo_stream {
         render turbo_stream: turbo_stream.replace(
           @group, GroupComponent.new(group: @group).render_in(view_context))
       }
       else
-        format.html { redirect_to user_path(current_user)}
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
     end
   end
 
   def destroy
+    unless current_user.is_admin?(@group)
+      redirect_to user_path(current_user), notice: "You are not authorized to delete this group"
+      return
+    end
     @group.user_groups.destroy_all
     @group.posts.destroy_all
     @group.destroy
@@ -89,7 +97,7 @@ class GroupsController < ApplicationController
       format.turbo_stream {
         render turbo_stream: turbo_stream.remove(@group)
       }
-      format.html { redirect_to user_path(current_user)}
+      format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
     end
   end
 

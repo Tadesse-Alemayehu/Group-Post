@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :prepare_user
+  before_action :prepare_user
 
   def posts
     @group=Group.find(params[:group_id])
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
           render turbo_stream: turbo_stream.update(
             'active-content', partial: "posts/index", locals: {groups: @groups})
         }
-          format.html { redirect_to user_path(current_user)}
+          format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
   end
   def groups
@@ -25,12 +25,12 @@ class UsersController < ApplicationController
           render turbo_stream: turbo_stream.update(
             'active-content', partial: "groups/index", locals: {groups: @groups})
         }
-          format.html { redirect_to user_path(current_user)}
+          format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA"}
       end
   end
 
   def show
-        @groups = Group.includes(:user_groups)
+    @groups = Group.includes(:user_groups)
   end
   private
   def prepare_user

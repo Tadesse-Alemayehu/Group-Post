@@ -8,23 +8,33 @@ class PostsController < ApplicationController
         render turbo_stream: turbo_stream.update(
           'active-content', ShowPostComponent.new(post: @post).render_in(view_context))
       }
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA" }
       end
   end
 
   def update
+    # server side authorization
+    unless can? :update, @post || current_user.is_admin?(@post.group)
+      redirect_to user_path(current_user), notice: "You are not authorized to update this post"
+      return
+    end
     respond_to do |format|
       if @post.update(param_filter)
         format.turbo_stream {
         render turbo_stream: turbo_stream.update(
           'active-content', ShowPostComponent.new(post: @post).render_in(view_context))
       }
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA" }
       end
     end
   end
 
   def destroy
+    # server side authorization
+    unless can? :update, @post || current_user.is_admin?(@post.group)
+      redirect_to user_path(current_user), notice: "You are not authorized to delete this post"
+      return
+    end
     @post.comments.destroy_all
     @post.destroy
     redirect_to user_path(current_user)
@@ -39,7 +49,7 @@ class PostsController < ApplicationController
         render turbo_stream: turbo_stream.prepend(
           'posts', PostComponent.new(post: post).render_in(view_context))
       }
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to user_path(current_user), notice: "Server is expecting turbo streams hence a SPA" }
       end
     end
   end
