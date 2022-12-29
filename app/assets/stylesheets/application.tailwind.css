@@ -3,12 +3,20 @@
 .overlay-btn {
   @apply border-solid border-2 border-red-500 rounded-lg p-2 inline-block text-red-500;
 }
-
+.overlay-btn:hover {
+  @apply bg-red-500 text-white;
+}
 .blue {
   @apply border-sky-500 text-sky-500;
 }
+.blue:hover {
+  @apply text-white bg-sky-500;
+}
 .green {
   @apply border-green-500 text-green-500;
+}
+.green:hover {
+  @apply text-white bg-green-500;
 }
 .title {
   @apply text-3xl text-sky-500 m-3;
@@ -18,6 +26,16 @@
 }
 @tailwind utilities;
 
+.form {
+  @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4;
+}
+.center {
+  @apply flex flex-col items-center;
+}
+
+.absolute-center {
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
 /*
 
 @layer components {
