@@ -25,5 +25,8 @@ export default class extends Controller {
       return el.getAttribute("id") == event.target.getAttribute("target");
     })[0];
     ele.classList.toggle("hidden");
+    if (event.target.getAttribute("id") == "cancel") {
+      event.preventDefault();
+    }
   }
 }

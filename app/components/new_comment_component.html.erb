@@ -2,21 +2,22 @@
 <% contents=@contents %>
 
 <% if contents.class.to_s == 'Comment' %>
-<%= form_with(model: comment, url: user_group_post_comments_path(user_id: current_user.id, group_id: params[:group_id]||0, post_id: 0, comment_id: contents.id)) do |f| %>
+<%= form_with(model: comment, url: user_group_post_comments_path(user_id: current_user.id, group_id: params[:group_id]||0, post_id: 0, comment_id: contents.id), class: " flex justify-end flex-col") do |f| %>
   <div class="field">
-    <%= f.text_area :body, class: "dark:bg-slate-800"%>
+    <%= f.text_area :body, class: "dark:bg-slate-800 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="actions">
-    <%= f.submit value: "Replay", "data-action": "modal#toggleReplay", target: "replay_to_#{comment.id}", method: "post"%>
+  <div class="actions  self-end m-3">
+    <%= f.submit value: "Replay", class: "overlay-btn blue", "data-action": "modal#toggleReplay", target: "replay_to_#{contents.id}", method: "post"%>
+    <button id="cancel" class="overlay-btn" data-action="modal#toggleReplay" target="replay_to_<%= contents.id %>">Cancel</button>
   </div>
 <% end %>
 <% else %>
-<%= form_with(model: comment, url: user_group_post_comments_path(user_id: current_user.id, group_id: params[:group_id]||0, post_id: contents.contents.id, comment_id: nil)) do |f| %>
+<%= form_with(model: comment, url: user_group_post_comments_path(user_id: current_user.id, group_id: params[:group_id]||0, post_id: contents.id, comment_id: nil), class: " flex justify-end flex-col") do |f| %>
   <div class="field">
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "dark:bg-slate-800 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="actions">
-    <%= f.submit  "data-action": "modal#toggleReplay", target: "replay_to_#{comment.id}"%>
+  <div class="actions self-end m-3">
+    <%= f.submit class: "overlay-btn blue",  "data-action": "modal#toggleReplay", target: "replay_to_#{comment.id}"%>
   </div>
 <% end %>
 <% end %>

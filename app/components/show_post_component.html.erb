@@ -1,4 +1,4 @@
-<%post=@post %>
+c<%post=@post %>
 <div id="<%= dom_id post%>" data-controller="modal">
 <div id="show<%= dom_id post%>" data-modal-target="show-post-content" class="">
   <h2 class="subtitle text-xl text-sky-700 m-3 space-x-5"><%= post.title %>
@@ -38,6 +38,9 @@
 </div>
 <div id="comments">
 <h2 class="text-xl text-sky-700 m-3 space-x-5">Comments</h2>
+<div data-modal-target="replay" id="replay_to_<%=post.id%>">
+  <%= render(NewCommentComponent.new(comment: Comment.new, contents: post)) %>
+</div>
 <% post.comments.each do |comment|%>
   <%= render(ShowCommentComponent.new(comment: comment)) %>
 <% end %>
