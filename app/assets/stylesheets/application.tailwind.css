@@ -13,6 +13,9 @@
 .title {
   @apply text-3xl text-sky-500 m-3;
 }
+.subtitle {
+  @apply text-lg text-sky-500 m-3;
+}
 @tailwind utilities;
 
 /*
