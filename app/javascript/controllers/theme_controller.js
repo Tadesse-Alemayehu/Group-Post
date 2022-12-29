@@ -26,5 +26,10 @@ export default class extends Controller {
     document.documentElement.classList.toggle("dark");
     this.darkTarget.classList.toggle("hidden");
     this.lightTarget.classList.toggle("hidden");
+
+    localStorage.setItem(
+      "user_theme",
+      this.darkTarget.classList.contains("hidden") ? "dark" : "light"
+    );
   }
 }
