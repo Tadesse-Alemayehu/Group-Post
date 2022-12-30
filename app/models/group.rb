@@ -12,11 +12,11 @@ class Group < ApplicationRecord
   def last_active
     active_days=(Time.now-self.updated_at.to_time)/1.day
     if active_days < 0.1
-      active_days=(active_days*24*24).round(2).to_i.to_s+"minutes"
+      active_days=(active_days*24*24).round(2).to_i.to_s+" minutes"
     elsif active_days  < 1
-      active_days=(active_days*24).round(2).to_i.to_s+"hours"
+      active_days=(active_days*24).round(2).to_i.to_s+" hours"
     else
-    return active_days.round(2).to_i.to_s+"days"
+    return active_days.round(2).to_i.to_s+" days"
     end
     active_days
   end
