@@ -6,7 +6,7 @@
   <p class="pl-10 ">
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.members_count %></strong> Members</span>
   <span class="m-3 font-light text-gray-500 dark:text-gray-400"><strong class="font-semibold text-gray-900 text-black"><%= @group.posts_count %></strong> Posts</span>
-  <span class="m-3 font-light text-gray-500 dark:text-gray-400"> Last active <strong class="font-semibold text-gray-900 text-black"><%= @group.last_active %></strong> days ago</span>
+  <span class="m-3 font-light text-gray-500 dark:text-gray-400"> Last active <strong class="font-semibold text-gray-900 text-black"><%= @group.last_active %></strong> ago</span>
 </p>
 <% if !current_user.joined?(@group) %>
 <%= link_to raw('<i class="fa-solid fa-arrows-to-circle"></i>Join group'), user_group_join_path(user_id: current_user.id, group_id: @group.id), class: "overlay-btn blue" %>

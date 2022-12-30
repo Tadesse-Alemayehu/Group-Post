@@ -273,7 +273,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
-environment	development	2022-12-29 14:50:04.282065	2022-12-29 14:50:04.282065
+environment	development	2022-12-29 21:15:07.911065	2022-12-29 21:15:07.911065
 \.
 
 
@@ -282,22 +282,6 @@ environment	development	2022-12-29 14:50:04.282065	2022-12-29 14:50:04.282065
 --
 
 COPY public.comments (id, user_id, contents_type, contents_id, body, created_at, updated_at) FROM stdin;
-1	1	Post	1	USER 1 COMMENT 1 ON POST 1	2022-12-29 14:50:05.526134	2022-12-29 14:50:05.526134
-2	1	Post	2	USER 1 COMMENT 1 ON POST 2	2022-12-29 14:50:05.534048	2022-12-29 14:50:05.534048
-3	1	Post	3	USER 1 COMMENT 1 ON POST 3	2022-12-29 14:50:05.539341	2022-12-29 14:50:05.539341
-4	1	Post	4	USER 1 COMMENT 1 ON POST 3	2022-12-29 14:50:05.545183	2022-12-29 14:50:05.545183
-5	1	Post	5	USER 1 COMMENT 1 ON POST 5	2022-12-29 14:50:05.550788	2022-12-29 14:50:05.550788
-6	1	Post	6	USER 1 COMMENT 1 ON POST 6	2022-12-29 14:50:05.556261	2022-12-29 14:50:05.556261
-7	2	Post	1	USER 2 COMMENT 1 ON POST 1	2022-12-29 14:50:05.56209	2022-12-29 14:50:05.56209
-8	2	Post	2	USER 2 COMMENT 1 ON POST 2	2022-12-29 14:50:05.567504	2022-12-29 14:50:05.567504
-9	2	Post	3	USER 2 COMMENT 1 ON POST 3	2022-12-29 14:50:05.572786	2022-12-29 14:50:05.572786
-10	2	Post	4	USER 2 COMMENT 1 ON POST 3	2022-12-29 14:50:05.578164	2022-12-29 14:50:05.578164
-11	2	Post	5	USER 2 COMMENT 1 ON POST 5	2022-12-29 14:50:05.583656	2022-12-29 14:50:05.583656
-12	2	Post	6	USER 2 COMMENT 1 ON POST 6	2022-12-29 14:50:05.588888	2022-12-29 14:50:05.588888
-13	2	Comment	1	USER 2 replay 1 ON POST 1	2022-12-29 14:50:05.60119	2022-12-29 14:50:05.60119
-14	2	Comment	2	USER 2 replay 2 ON POST 2	2022-12-29 14:50:05.607357	2022-12-29 14:50:05.607357
-15	1	Comment	6	USER 1 replay 1 ON POST 6	2022-12-29 14:50:05.613013	2022-12-29 14:50:05.613013
-16	1	Comment	7	USER 1 replay 2 ON POST 7	2022-12-29 14:50:05.618442	2022-12-29 14:50:05.618442
 \.
 
 
@@ -306,14 +290,6 @@ COPY public.comments (id, user_id, contents_type, contents_id, body, created_at,
 --
 
 COPY public.groups (id, user_id, name, created_at, updated_at) FROM stdin;
-1	1	Calvins' Teaching group	2022-12-29 14:50:05.252124	2022-12-29 14:50:05.252124
-2	1	W3C Working Committee	2022-12-29 14:50:05.259589	2022-12-29 14:50:05.259589
-3	1	simplero Working group	2022-12-29 14:50:05.265156	2022-12-29 14:50:05.265156
-4	1	mongoDB Working group	2022-12-29 14:50:05.270551	2022-12-29 14:50:05.270551
-5	2	2Calvins' Teaching group	2022-12-29 14:50:05.275802	2022-12-29 14:50:05.275802
-6	2	2W3C Working Committee	2022-12-29 14:50:05.280511	2022-12-29 14:50:05.280511
-7	2	2simplero Working group	2022-12-29 14:50:05.285832	2022-12-29 14:50:05.285832
-8	2	2mongoDB Working group	2022-12-29 14:50:05.29119	2022-12-29 14:50:05.29119
 \.
 
 
@@ -322,18 +298,6 @@ COPY public.groups (id, user_id, name, created_at, updated_at) FROM stdin;
 --
 
 COPY public.posts (id, user_id, group_id, title, body, created_at, updated_at) FROM stdin;
-1	1	1	user 1 post 1 on group 1	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.417036	2022-12-29 14:50:05.417036
-2	1	2	user 1 post 2 on group 2	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.426055	2022-12-29 14:50:05.426055
-3	1	2	user 1 post 3 on group 3	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.432805	2022-12-29 14:50:05.432805
-4	1	4	user 1 post 4 on group 4	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.439241	2022-12-29 14:50:05.439241
-5	1	5	user 1 post 5 on group 5	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.445859	2022-12-29 14:50:05.445859
-6	1	6	user 1 post 6 on group 6	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.452828	2022-12-29 14:50:05.452828
-7	2	1	user 2 post 1 on group 1	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.459998	2022-12-29 14:50:05.459998
-8	2	2	user 2 post 2 on group 2	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.46737	2022-12-29 14:50:05.46737
-9	2	5	user 2 post 3 on group 3	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.473975	2022-12-29 14:50:05.473975
-10	2	6	user 2 post 4 on group 4	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.480863	2022-12-29 14:50:05.480863
-11	2	7	user 2 post 5 on group 5	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.488063	2022-12-29 14:50:05.488063
-12	2	8	user 2 post 6 on group 6	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n commodo consequat. Duis aute irure doloasdas aa.\n	2022-12-29 14:50:05.494699	2022-12-29 14:50:05.494699
 \.
 
 
@@ -356,18 +320,6 @@ COPY public.schema_migrations (version) FROM stdin;
 --
 
 COPY public.user_groups (id, user_id, group_id, created_at, updated_at) FROM stdin;
-1	1	1	2022-12-29 14:50:05.312934	2022-12-29 14:50:05.312934
-2	1	2	2022-12-29 14:50:05.321803	2022-12-29 14:50:05.321803
-3	1	3	2022-12-29 14:50:05.328604	2022-12-29 14:50:05.328604
-4	1	4	2022-12-29 14:50:05.335008	2022-12-29 14:50:05.335008
-5	1	5	2022-12-29 14:50:05.341711	2022-12-29 14:50:05.341711
-6	1	6	2022-12-29 14:50:05.353986	2022-12-29 14:50:05.353986
-7	2	1	2022-12-29 14:50:05.361058	2022-12-29 14:50:05.361058
-8	2	2	2022-12-29 14:50:05.36767	2022-12-29 14:50:05.36767
-9	2	5	2022-12-29 14:50:05.373705	2022-12-29 14:50:05.373705
-10	2	6	2022-12-29 14:50:05.380358	2022-12-29 14:50:05.380358
-11	2	7	2022-12-29 14:50:05.38702	2022-12-29 14:50:05.38702
-12	2	8	2022-12-29 14:50:05.39362	2022-12-29 14:50:05.39362
 \.
 
 
@@ -376,8 +328,6 @@ COPY public.user_groups (id, user_id, group_id, created_at, updated_at) FROM std
 --
 
 COPY public.users (id, name, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at) FROM stdin;
-1		2022-12-29 14:50:05.012873	2022-12-29 14:50:05.012873	calvin@simplero.com	$2a$12$7BVACnIAb42LzBc0yZcMbuKMNUOTYSkYfVLCPJFxCHpBr3C/Q644y	\N	\N	\N
-2		2022-12-29 14:50:05.219825	2022-12-29 14:50:05.219825	owais@simplero.com	$2a$12$nfdCG2SbMGquU5es2QEiqOHCuO9S0pvee2/X/Gpl1HjXsHMNWhZCy	\N	\N	\N
 \.
 
 
@@ -385,35 +335,35 @@ COPY public.users (id, name, created_at, updated_at, email, encrypted_password, 
 -- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.comments_id_seq', 16, true);
+SELECT pg_catalog.setval('public.comments_id_seq', 1, false);
 
 
 --
 -- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.groups_id_seq', 8, true);
+SELECT pg_catalog.setval('public.groups_id_seq', 1, false);
 
 
 --
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 12, true);
+SELECT pg_catalog.setval('public.posts_id_seq', 1, false);
 
 
 --
 -- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.user_groups_id_seq', 12, true);
+SELECT pg_catalog.setval('public.user_groups_id_seq', 1, false);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 
 --
