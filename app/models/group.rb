@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  validates :name, presence: {message: "Group name can't be blank"}
   belongs_to :user
   has_many :user_groups
   has_many :posts
