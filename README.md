@@ -7,7 +7,8 @@
 - Rails 7
 
 ## schema design 
-![Schema Design](https://github.com/orozCoding/Tadesse-Alemayehu-take-home-project/blob/main/Intial%20schema.jpg?raw=true).
+![Intial schema](https://user-images.githubusercontent.com/69077061/214702027-6bbc4e35-4748-43a3-82d1-8d9f32ccce71.jpg)
+
 ## primary features
 
 https://user-images.githubusercontent.com/69077061/209985380-bc6bada4-62a9-473c-beff-6169810c175c.mp4
